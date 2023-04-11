@@ -1,0 +1,70 @@
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+
+local Window = Rayfield:CreateWindow({
+    Name = "Verlox",
+    LoadingTitle = "Welcome to Verlox Hub",
+    LoadingSubtitle = "Made by Verlox, Modded by RebornPhantom",
+    ConfigurationSaving = {
+       Enabled = false,
+       FolderName = nil, -- Create a custom folder for your hub/game
+       FileName = "Verlox Hub Testing"
+    },
+    Discord = {
+       Enabled = false,
+       Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD.
+       RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+    },
+    KeySystem = false, -- Set this to true to use our key system
+    KeySettings = {
+       Title = "Verlox",
+       Subtitle = "Enter key",
+       Note = "Warning, this script isn't finshed yet",
+       FileName = "resin hub",
+       SaveKey = true,
+       GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+       Key = "3a2972e5-7fed-4721-b443-44d2a66f1bc5"
+    }
+ })
+
+local Tab = Window:CreateTab("Credits")
+local Section = Tab:CreateSection("Guide")
+local Paragraph = Tab:CreateParagraph({Title = "Credits", Content = "Script made by Verlox, Remade and Optimized by RebornPhantom"})
+local Paragraph = Tab:CreateParagraph({Title = "Credits", Content = "Join the Discord at discord.gg/eCAUZSVEjr"})
+local Paragraph = Tab:CreateParagraph({Title = "Changelogs", Content = "V0.0.1 The Hub Script is now Released!"})
+
+
+local Main = Window:CreateTab("Movement") 
+local Section = Main:CreateSection("Movement")
+local mouse = Main:CreateSlider({
+    Name = "Speed ",
+    Range = {0, 1000},	
+    Increment = 10,
+    Suffix = "speed",
+    CurrentValue = 50,
+    Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(s)		
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end,
+})
+
+-- Notify
+
+local Players = game:GetService("Players")
+
+local whitelist = {
+   "whynotshort",
+}
+
+
+Players.PlayerAdded:Connect(function(player)
+   if table.find(whitelistlist, player.Name) then
+       repeat wait() until game:IsLoaded()
+wait(1.5)
+game.StarterGui:SetCore("SendNotification", {
+Title = "I Have Arrived"; 
+Text = "A Dev of the Script Has Entered Your Lobby"; 
+Icon = ""; 
+Duration = 10; -- how long the notification should in secounds
+})
+   end
+end)
